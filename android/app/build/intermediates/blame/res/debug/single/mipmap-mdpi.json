@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/icon.png",
+        "source": "/home/rashi/Documents/Project practice/ppl/android/app/src/main/res/mipmap-mdpi/icon.png"
+    },
+    {
+        "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/rashi/Documents/Project practice/ppl/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]
