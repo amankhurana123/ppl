@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import config from "../../config/config";
-import { tabBarLabel } from "react-navigation";
 
 export default class AddPostRender extends AddPost {
   render() {

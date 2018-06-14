@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { apiInstance } from "../../utilies/api";
 import * as ImagePicker from "react-native-image-picker";
+import { AsyncStorage } from "react-native";
 let options = {
   title: "Select Avatar",
   customButton: [{ name: "fb", title: "Choose Photo from Facebook" }],
@@ -16,7 +17,8 @@ export default class AddPost extends Component {
       post: {
         postTitle: "",
         avatarSource: {},
-        categoryId: ""
+        categoryId: "",
+        userId: ""
       },
       category: [],
       error: {
@@ -27,6 +29,17 @@ export default class AddPost extends Component {
     };
   }
   componentWillMount = () => {
+    AsyncStorage.getItem("user")
+      .then(response => {
+        const user = JSON.parse(response);
+        this.state.post.userId = user._id;
+
+        this.setState({});
+      })
+      .catch(error => {
+        console.warn("Error", error);
+      });
+
     const options = {
       method: "get",
       url: "/category/view"
@@ -81,11 +94,12 @@ export default class AddPost extends Component {
     }
   };
   addNewPost = () => {
-    let { postTitle, avatarSource, categoryId } = this.state.post;
+    let { postTitle, avatarSource, categoryId, userId } = this.state.post;
     let data = new FormData();
     data.append("postTitle", postTitle);
     data.append("avatarSource", avatarSource);
     data.append("categoryId", categoryId);
+    data.append("userId", userId);
     const headers = {
       "content-type": "multipart/form-data",
       Accept: "application/json",

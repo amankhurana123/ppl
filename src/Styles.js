@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   viewText: { flex: 2 / 3 },
 
   text: {
-    fontSize: 30,
+    fontSize: 28,
     alignSelf: "center",
     color: "white"
   },
