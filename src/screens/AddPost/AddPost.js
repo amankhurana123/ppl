@@ -113,7 +113,7 @@ export default class AddPost extends Component {
     };
     apiInstance(options)
       .then(response => {
-        alert("response are", response);
+        alert("Successfully data is entered");
       })
       .catch(error => {
         alert("Error", error);

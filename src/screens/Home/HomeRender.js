@@ -6,7 +6,9 @@ import {
   StyleSheet,
   Image,
   ScrollView,
-  Dimensions
+  Dimensions,
+  TextInput,
+  TouchableHighlight
 } from "react-native";
 import Home from "./Home";
 import { styles } from "../../Styles";
@@ -20,6 +22,7 @@ export default class HomeRender extends Home {
     let { screenProps } = this.props;
     const { posts } = this.state;
     let postData = posts.map((value, index) => {
+      this.state.showPost.postId = value._id;
       return (
         <View key={index}>
           <Text
@@ -28,7 +31,8 @@ export default class HomeRender extends Home {
               fontSize: 24,
               fontFamily: "Roboto",
               justifyContent: "space-between",
-              marginHorizontal: 25
+              marginHorizontal: 25,
+              marginVertical: 10
             }}
           >
             {value.postTitle}
@@ -41,7 +45,8 @@ export default class HomeRender extends Home {
               width: win.width,
               height: (win.height * 3) / 4,
               borderWidth: 0.5,
-              justifyContent: "space-between"
+              justifyContent: "space-between",
+              marginVertical: 10
             }}
           />
           <View
@@ -50,25 +55,73 @@ export default class HomeRender extends Home {
               {
                 flexWrap: "wrap",
                 justifyContent: "space-around",
-                flexDirection: "row"
+                flexDirection: "row",
+                marginVertical: 10
               }
             ]}
           >
-            <TouchableOpacity style={style.buttonView} activeOpacity={0.9}>
-              <View>
-                <Icons name="like" color="#f1680e" size={36}>
-                  <Text />
-                  <Text style={style.textButton}>Like</Text>
-                </Icons>
-              </View>
+            <TouchableOpacity
+              style={style.buttonView}
+              activeOpacity={0.8}
+              onPress={this.onChangeValue}
+            >
+              <Icons name="like" color="#f1680e" size={36}>
+                <Text style={style.textButton}>{this.state.showPost.like}</Text>
+                <Text style={style.textButton}>Like</Text>
+              </Icons>
             </TouchableOpacity>
-            <TouchableOpacity style={style.buttonView} activeOpacity={0.9}>
-              <View>
-                <Icons name="comment" color="#f1680e" size={36}>
-                  <Text style={style.textButton}>Comment</Text>
-                </Icons>
-              </View>
+            <TouchableOpacity
+              style={style.buttonView}
+              activeOpacity={0.7}
+              onPress={() => {
+                this.state.flag = index;
+                this.setState({});
+              }}
+            >
+              <Icons name="comment" color="#f1680e" size={36}>
+                <Text style={style.textButton}>Comment</Text>
+              </Icons>
             </TouchableOpacity>
+          </View>
+          <View>
+            {this.state.flag == index ? (
+              <View>
+                <TouchableHighlight>
+                  <TextInput
+                    multiline={true}
+                    underlineColorAndroid="white"
+                    placeholder="Your comments..."
+                    placeholderTextColor="white"
+                    autoCorrect={false}
+                    autoCapitalize="sentences"
+                    dataDetectorTypes="all"
+                    editable={true}
+                    style={{ color: "white" }}
+                    onChangeText={text => {
+                      this.state.showPost.comment = "text";
+                      this.setState({});
+                    }}
+                  />
+                </TouchableHighlight>
+                <TouchableOpacity
+                  style={[
+                    style.buttonView,
+                    {
+                      alignSelf: "center",
+                      width: 100,
+                      marginVertical: 10
+                    }
+                  ]}
+                  key={index}
+                  activeOpacity={0.8}
+                  onPress={this.addComment}
+                >
+                  <Text style={style.textButton}>Submit</Text>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View />
+            )}
           </View>
         </View>
       );
@@ -110,14 +163,14 @@ const style = StyleSheet.create({
   buttonView: {
     backgroundColor: "white",
     flex: 5 / 11,
-    justifyContent: "space-between",
+
     alignContent: "space-around",
-    borderRadius: 4,
+    borderRadius: 5,
     height: 36,
-    borderColor: "#f1680e"
+    borderColor: "#c25b2c"
   },
   textButton: {
-    color: "#f1680e",
+    color: "#c25b2c",
     alignSelf: "center",
     fontSize: 18
   }
