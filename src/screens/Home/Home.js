@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { apiInstance } from "../../utilies/api";
 import { AsyncStorage } from "react-native";
-
 export default class Home extends Component {
   static navigationOptions = {
     drawerLabel: "Home"
@@ -9,21 +8,28 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
       posts: [],
       showPost: {
-        like: null,
-        comment: "",
-        postId: ""
+        like: 0,
+        comment: "none",
+        postId: "",
+        userId: {}
       },
-      flag: null,
-      error: ""
+      flagLike: null,
+      flag: null
     };
   }
-  componentWillMount = async () => {
+  componentDidMount = async () => {
     const response = await AsyncStorage.getItem("user");
     const user = JSON.parse(response);
-    const params = encodeURI(JSON.stringify({ userId: user._id }));
+
+    this.state.showPost.userId = user._id;
+    this.setState({});
+    console.warn("this.state.userID", this.state.showPost.userId);
+
+    const params = encodeURI(
+      JSON.stringify({ userId: this.state.showPost.userId })
+    );
 
     const options = {
       method: "get",
@@ -33,26 +39,22 @@ export default class Home extends Component {
       .then(response => {
         this.state.posts = response.data;
         this.setState({});
+        this.getPostData();
       })
-      .catch(error => console.warn(error, error));
+      .catch(error => console.warn("error", error));
   };
-  onChangeValue = () => {
+  onChangeValue = index => {
     this.state.showPost.like = this.state.showPost.like + 1;
-
+    this.state.flagLike = index;
     this.setState({});
+    this.likeAndCommnetSubmit();
   };
   addComment = () => {
-    let { comment } = this.state.showPost;
-    if (!comment.trim()) {
-      this.state.error = "Enter the comment";
-      this.setState({});
-    } else {
-      this.setState({ flag: null, error: "" });
-      this.commentSubmit();
-    }
+    this.setState({ flag: null });
+    this.likeAndCommnetSubmit();
   };
-  commentSubmit = () => {
-    const header = {
+  likeAndCommnetSubmit = () => {
+    const headers = {
       "content-type": "application/json",
       Accept: "application/json"
     };
@@ -65,8 +67,30 @@ export default class Home extends Component {
     };
     apiInstance(options)
       .then(response => {
-        console.warn("response");
+        console.log("response", response);
+
+        console.warn("response", response);
       })
-      .catch(error => console.warn("error are", error));
+      .catch(error => {
+        console.log("response", response);
+
+        console.warn("error are", error);
+      });
+  };
+  getPostData = () => {
+    const params = encodeURI(
+      JSON.stringify({ userId: this.state.showPost.userId })
+    );
+    const options = {
+      method: "get",
+      url: "/showPost/show?params=" + params,
+      timeout: 1000
+    };
+    apiInstance(options)
+      .then(response => {
+        console.warn(response);
+        console.log("<><<><><><><>><><><response.data", response);
+      })
+      .catch(error => console.warn("error get", error));
   };
 }

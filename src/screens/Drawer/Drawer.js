@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { DrawerNavigator } from "react-navigation";
+import { createDrawerNavigator } from "react-navigation";
 import AddCategory from "../AddCategory/AddCategoryRender";
 import Home from "../Home/HomeRender";
 import AddPost from "../AddPost/AddPostRender";
 import { AsyncStorage } from "react-native";
 // import Logout from "./Logout";
 
-let RootDrawer = DrawerNavigator(
+let RootDrawer = createDrawerNavigator(
   {
     Home: {
       screen: Home

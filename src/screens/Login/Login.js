@@ -78,6 +78,9 @@ export default class Login extends Component {
         return AsyncStorage.setItem("user", JSON.stringify(response.data[0]));
       })
       .then(res => {
+        alert("You are succesfully login.");
+      })
+      .then(res => {
         this.props.navigation.navigate("Drawer");
       })
       .catch(err => {
