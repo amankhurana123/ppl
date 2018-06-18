@@ -95,18 +95,6 @@ export default class Register extends Component {
       username,
       avatarSource
     } = this.state.user;
-    console.log(
-      "=============================",
-      firstName,
-      lastName,
-      email,
-      password,
-      username,
-      avatarSource.uri,
-      avatarSource.fileName,
-      avatarSource.fileSize,
-      avatarSource.type
-    );
     data.append("avatarSource", avatarSource);
     data.append("username", username);
     data.append("password", password);
@@ -128,11 +116,16 @@ export default class Register extends Component {
 
     apiInstance(options)
       .then(response => {
-        this.props.navigation.navigate("Login");
-        alert("You are successfully register");
+        if (response.data == "UserName or email will already exists") {
+          this.state.error.email = "Email is already exists.";
+          this.setState({});
+        } else {
+          this.props.navigation.navigate("Login");
+          alert("Verification code is send your email.");
+        }
       })
-      .catch(err => {
-        alert("You are not successfully register");
+      .catch(error => {
+        alert(error);
       });
   };
 

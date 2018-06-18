@@ -78,57 +78,64 @@ export default class AddPostRender extends AddPost {
           />
         </View>
         <View style={[styles.viewInput, { flex: 3 / 4 }]}>
+          <TouchableOpacity onPress={this.show}>
+            {this.state.flag ? (
+              <Image
+                source={this.state.post.avatarSource}
+                style={{ height: 150, width: 300, alignSelf: "center" }}
+              />
+            ) : (
+              <Text style={[styles.text, { fontSize: 18 }]}>
+                Upload the new Picture
+              </Text>
+            )}
+          </TouchableOpacity>
+          <Picker
+            mode="dropdown"
+            selectedValue={this.state.post.categoryId}
+            style={styles.textInput}
+            onValueChange={itemValue =>
+              this.onChangeState(itemValue, "categoryId")
+            }
+          >
+            {options()}
+          </Picker>
+          {this.state.error.categoryId ? (
+            <Text style={styles.errorStyle}>{this.state.error.categoryId}</Text>
+          ) : null}
           <ScrollView>
-            <TouchableOpacity onPress={this.show}>
-              {this.state.flag ? (
-                <Image
-                  source={this.state.post.avatarSource}
-                  style={{ height: 150, width: 300, alignSelf: "center" }}
-                />
-              ) : (
-                <Text style={[styles.text, { fontSize: 18 }]}>
-                  Upload the new Picture
-                </Text>
-              )}
-            </TouchableOpacity>
-            <Picker
-              mode="dropdown"
-              selectedValue={this.state.post.categoryId}
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Title of post"
+              placeholderTextColor="white"
+              underlineColorAndroid="white"
               style={styles.textInput}
-              onValueChange={itemValue =>
-                this.onChangeState(itemValue, "categoryId")
-              }
-            >
-              {options()}
-            </Picker>
-            {this.state.error.categoryId ? (
+              onChangeText={text => {
+                this.onChangeState(text, "postTitle");
+              }}
+            />
+            {this.state.error.postTitle ? (
               <Text style={styles.errorStyle}>
-                {this.state.error.categoryId}
+                {this.state.error.postTitle}
               </Text>
             ) : null}
-            <KeyboardAvoidingView behavior="padding" enabled>
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Title of post"
-                placeholderTextColor="white"
-                underlineColorAndroid="white"
-                style={styles.textInput}
-                onChangeText={text => {
-                  this.onChangeState(text, "postTitle");
-                }}
-              />
-              {this.state.error.postTitle ? (
-                <Text style={styles.errorStyle}>
-                  {this.state.error.postTitle}
-                </Text>
-              ) : null}
-
-              <View style={styles.button}>
-                <Button title="Create post" onPress={this.isValid} />
-              </View>
-            </KeyboardAvoidingView>
+            <TextInput
+              autoCapitalize="sentences"
+              autoCorrect={false}
+              placeholder="Discriptions"
+              placeholderTextColor="white"
+              underlineColorAndroid="white"
+              style={styles.textInput}
+              multiline={true}
+              onChangeText={text => {
+                this.onChangeState(text, "postDiscription");
+              }}
+            />
           </ScrollView>
+          <View style={styles.button}>
+            <Button title="Create post" onPress={this.isValid} />
+          </View>
         </View>
       </View>
     );

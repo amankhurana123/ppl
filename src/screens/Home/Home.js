@@ -25,7 +25,6 @@ export default class Home extends Component {
 
     this.state.showPost.userId = user._id;
     this.setState({});
-    console.warn("this.state.userID", this.state.showPost.userId);
 
     const params = encodeURI(
       JSON.stringify({ userId: this.state.showPost.userId })
@@ -88,7 +87,7 @@ export default class Home extends Component {
     };
     apiInstance(options)
       .then(response => {
-        console.warn(response);
+        // console.warn(response);
         console.log("<><<><><><><>><><><response.data", response);
       })
       .catch(error => console.warn("error get", error));

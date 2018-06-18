@@ -53,7 +53,12 @@ export default class AddCategory extends Component {
     };
     apiInstance(options)
       .then(response => {
-        console.log("response is ", response);
+        if (response.data == "Category is already exists") {
+          this.state.error = "Category is already exists.";
+          this.setState({});
+        } else {
+          alert("Category is created successfully.");
+        }
       })
       .catch(err => {
         console.log("Error", err);

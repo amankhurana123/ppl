@@ -18,7 +18,8 @@ export default class AddPost extends Component {
         postTitle: "",
         avatarSource: {},
         categoryId: "",
-        userId: ""
+        userId: "",
+        postDiscription: ""
       },
       category: [],
       error: {
@@ -113,7 +114,7 @@ export default class AddPost extends Component {
     };
     apiInstance(options)
       .then(response => {
-        alert("Successfully data is entered");
+        alert("Post is created");
       })
       .catch(error => {
         alert("Error", error);
