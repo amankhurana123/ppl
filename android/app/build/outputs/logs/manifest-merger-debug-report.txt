@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-36:12
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-43:12
 	package
 		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:2:5-22
 		INJECTED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml
@@ -55,7 +55,7 @@ MERGED from [com.facebook.soloader:soloader:0.1.0] /home/rashi/Documents/Project
 		INJECTED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:12:5-34:19
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:12:5-41:19
 MERGED from [ppl:react-native-splash-screen:unspecified] /home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/ppl/react-native-splash-screen/unspecified/AndroidManifest.xml:11:5-12:19
 MERGED from [ppl:react-native-image-picker:unspecified] /home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/ppl/react-native-image-picker/unspecified/AndroidManifest.xml:11:5-21:19
 MERGED from [com.facebook.react:react-native:0.55.4] /home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/AndroidManifest.xml:13:5-20
@@ -92,7 +92,7 @@ ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/Andro
 	android:name
 		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:24:19-66
 activity#com.ppl.MainActivity
-ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:27:7-32:35
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:27:7-39:20
 	android:label
 		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:29:9-41
 	android:exported
@@ -103,10 +103,30 @@ ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/Andro
 		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:30:9-79
 	android:name
 		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:28:9-37
-activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:33:7-84
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:33:9-38:17
+	android:label
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:33:24-59
+action#android.intent.action.VIEW
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:34:3-55
 	android:name
-		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:33:17-81
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:34:11-52
+category#android.intent.category.DEFAULT
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:35:3-62
+	android:name
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:35:13-59
+category#android.intent.category.BROWSABLE
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:36:3-64
+	android:name
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:36:13-61
+data
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:37:3-33
+	android:scheme
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:37:9-29
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:40:7-84
+	android:name
+		ADDED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:40:17-81
 provider#com.imagepicker.FileProvider
 ADDED from [ppl:react-native-image-picker:unspecified] /home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/ppl/react-native-image-picker/unspecified/AndroidManifest.xml:12:9-20:20
 	android:authorities
@@ -124,6 +144,6 @@ ADDED from [ppl:react-native-image-picker:unspecified] /home/rashi/Documents/Pro
 	android:name
 		ADDED from [ppl:react-native-image-picker:unspecified] /home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/ppl/react-native-image-picker/unspecified/AndroidManifest.xml:18:17-67
 android:uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-43:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /home/rashi/Documents/Project practice/ppl/android/app/src/main/AndroidManifest.xml:1:1-43:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

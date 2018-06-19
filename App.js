@@ -12,6 +12,7 @@ import Register from "./src/screens/Register/RegisterRender";
 import ForgotPassword from "./src/screens/ForgotPassword";
 import NewPassword from "./src/screens/NewPassword";
 import Drawer from "./src/screens/Drawer/Drawer";
+import VerificationCode from "./src/screens/VerificationCode/VerificationCodeRender";
 import SplashScreen from "react-native-splash-screen";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -34,10 +35,14 @@ let RootStack = createStackNavigator(
       navigationOptions: nullHeader
     },
     ForgotPassword: { screen: ForgotPassword, navigationOptions: nullHeader },
-    NewPassword: { screen: NewPassword, navigationOptions: nullHeader }
+    NewPassword: { screen: NewPassword, navigationOptions: nullHeader },
+    VerificationCode: {
+      screen: VerificationCode,
+      navigationOptions: nullHeader
+    }
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "VerificationCode"
   }
 );
 

@@ -75,15 +75,16 @@ export default class Login extends Component {
     };
     apiInstance(options)
       .then(response => {
-        if (
-          response.data == "Please enter the correct email" ||
-          response.data == "You are not authoried user."
-        ) {
-          if (response.data == "You are not authoried user.") {
-            this.state.error.email = "You are not authoried user.";
-          } else {
-            this.state.error.email = "Please enter the correct email";
-          }
+        // if (
+        //   response.data == "Please enter the correct email" ||
+        //   response.data == "You are not authoried user."
+        // ) {
+        if (response.data == "You are not authoried user.") {
+          this.state.error.email = "You are not authoried user.";
+          this.setState({});
+        } else if (response.data == "Please enter the correct email") {
+          this.state.error.email = "Please enter the correct email";
+          // }
           this.setState({});
         } else if (response.data == "Please enter the correct password") {
           this.state.error.password = "Please enter the correct password";
