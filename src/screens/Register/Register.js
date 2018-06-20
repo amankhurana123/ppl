@@ -13,9 +13,6 @@ let options = {
 };
 
 export default class Register extends Component {
-  static navigationOptions = {
-    title: "Register"
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -43,30 +40,9 @@ export default class Register extends Component {
     this.state.error[name] = "";
     this.setState({});
   };
-  ComponentDidMount = () => {
-    if (Platform.OS === "android") {
-      Linking.getInitialURL().then(url => {
-        this.navigate(url);
-      });
-    } else {
-      Linking.addEventListener("url", this.handleOpenURL);
-    }
-  };
-  componentWillUnmount = () => {
-    Linking.removeEventListener("url", this.handleOpenURL);
-  };
-  handleOpenURL = event => {
-    this.navigate(event.url);
-  };
-  navigate = url => {
-    const { navigate } = this.props.navigation;
-    const route = url.replace(/.*?:\/\//g, "");
-    const id = route.match(/\/([^\/]+)\/?$/)[1];
-    const routeName = route.split("/")[0];
-    if (routeName === "Register") {
-      navigate("verificationCode", { email: this.state.user.email });
-    }
-  };
+  componentWillMount() {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>> on register");
+  }
   isValid = () => {
     let { username, password, email, firstName, lastName } = this.state.user;
     const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -149,8 +125,8 @@ export default class Register extends Component {
           this.state.error.email = "Email is already exists.";
           this.setState({});
         } else {
-          // this.props.navigation.navigate("Login");
           alert("Verification code is send your email.");
+          this.props.navigation.navigate("Login");
         }
       })
       .catch(error => {

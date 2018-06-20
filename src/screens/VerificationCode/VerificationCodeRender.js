@@ -12,6 +12,11 @@ import { styles } from "../../Styles";
 
 export default class VerificaionCodeRender extends VerificaionCode {
   render() {
+    const { email } = this.props.navigation.state.params;
+    const userEmail = JSON.parse(decodeURI(email));
+    // this.setState({ user: { email: userEmail } });
+    console.warn("email", JSON.parse(decodeURI(email)));
+    console.warn("this.props.navigation.state.params", userEmail.email);
     return (
       <View style={styles.container}>
         <View
@@ -30,9 +35,11 @@ export default class VerificaionCodeRender extends VerificaionCode {
               autoCorrect={false}
               underlineColorAndroid="white"
               style={styles.textInput}
-              //   onChangeText={text => {
-              //     this.onChangeState(text, "postTitle");
-              //   }}
+              onChangeText={() => {
+                this.state.user.email = userEmail.email;
+                this.setState({});
+              }}
+              defaultValue={this.state.user.email}
             />
 
             <TextInput

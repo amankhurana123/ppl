@@ -64,12 +64,12 @@
         "source": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
-        "source": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_cab_background_internal_bg.xml"
-    },
-    {
         "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/drawable/background_splash.xml",
         "source": "/home/rashi/Documents/Project practice/ppl/android/app/src/main/res/drawable/background_splash.xml"
+    },
+    {
+        "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "/home/rashi/Documents/Project practice/ppl/android/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",

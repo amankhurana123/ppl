@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, Linking, Platform } from "react-native";
 import { apiInstance } from "../../utilies/api";
 export default class Login extends Component {
   constructor(props) {
@@ -27,7 +27,32 @@ export default class Login extends Component {
         console.warn("error are", error);
       });
   };
-
+  ComponentDidMount = () => {
+    if (Platform.OS === "android") {
+      Linking.getInitialURL().then(url => {
+        this.navigate(url);
+      });
+    } else {
+      Linking.addEventListener("url", this.handleOpenURL);
+    }
+  };
+  componentWillUnmount = () => {
+    Linking.removeEventListener("url", this.handleOpenURL);
+  };
+  handleOpenURL = event => {
+    this.navigate(event.url);
+  };
+  navigate = url => {
+    const { navigate } = this.props.navigation;
+    console.log(">>>>>>>>>>>>", url);
+    const route = url.replace(/.*?:\/\//g, "");
+    const id = route.match(/\/([^\/]+)\/?$/)[1];
+    const routeName = route.split("/")[0];
+    console.log("route name", routeName);
+    if (routeName === "Register") {
+      navigate("Register", { email: this.state.verifyUser.email });
+    }
+  };
   isChangeState = (value, name) => {
     this.state.verifyUser[name] = value;
     this.state.error[name] = "";

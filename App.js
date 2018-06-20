@@ -42,7 +42,7 @@ let RootStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "VerificationCode"
+    initialRouteName: "Login"
   }
 );
 

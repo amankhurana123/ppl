@@ -6,6 +6,8 @@ export default class NewPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: "",
+      verificationCode: null,
       password: "",
       error: ""
     };
@@ -16,6 +18,12 @@ export default class NewPassword extends Component {
       this.setState({ error: "Please enter the password" });
     }
   };
+  componentDidMount() {
+    const { email } = this.props.navigation.state.params;
+    const userEmail = JSON.parse(decodeURI(email));
+    this.state.email = userEmail.email;
+    this.setState({});
+  }
   render() {
     return (
       <View style={styles.container}>

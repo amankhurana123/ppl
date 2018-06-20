@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { apiInstance } from "../../utilies/api";
 export default class VerificationCode extends Component {
-  static navigationOptions = {
-    title: "VerificationCode"
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -66,7 +63,9 @@ export default class VerificationCode extends Component {
     };
     apiInstance(options)
       .then(res => {
+        alert(res);
         console.warn("response", res);
+        this.props.navigation.navigate("Login");
       })
       .catch(error => {
         console.log("error", error);
